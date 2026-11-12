@@ -1,0 +1,120 @@
+#####################################################################################
+#####################################################################################
+########################## DAG: MASLD AND OFFSPRING NDD #############################
+#####################################################################################
+#####################################################################################
+
+# Date: 2.10.2026
+
+# Tool used: https://www.dagitty.net/
+  # Online version ("Launch DAGitty online in your browser.")
+  # Specification: "Adjustment (total effect)"
+
+# Code
+
+dag {
+CalendarYearOfDelivery [pos="-3.000,3.000"]
+MaternalAgeAtDelivery [pos="-3.000,-1.000"]
+CountryOfBirth [pos="-0.100,3.000"]
+MaternalDM2 [pos="-2.000,2.000"]
+MaternalGDM [pos="-1.000,2.000"]
+MaternalHT [pos="0.000,2.000"]
+MaternalGHT [pos="1.000,2.000"]
+MaternalDyslipidemia [pos="1.800,2.5"]
+MaternalLowEducationLevel [pos="0.100,-1.000"]
+MaternalMASLD [exposure,pos="-2.000,1.000"]
+MaternalNDD [pos="-2.000,-1.000"]
+PretermBirth [pos="0.200,0.300"]
+FetalGrowth  [pos="-0.800,0.300"]
+
+MaternalObesity [pos="-1.000,0.000"]
+MaternalPsychiatricDisease [pos="-1.000,-1.000"]
+MaternalSmoking [pos="1.000,-1.000"]
+OffspringNDD [outcome,pos="2.000,1.000"]
+OffspringSex [pos="2.000,-1.000"]
+Parity [pos="-3.500,0.000"]
+
+CalendarYearOfDelivery -> MaternalMASLD
+CalendarYearOfDelivery -> OffspringNDD
+CalendarYearOfDelivery -> MaternalGHT
+CalendarYearOfDelivery -> MaternalHT
+CalendarYearOfDelivery -> MaternalGDM
+CalendarYearOfDelivery -> MaternalDM2
+CalendarYearOfDelivery -> MaternalDyslipidemia
+CalendarYearOfDelivery -> MaternalNDD
+CalendarYearOfDelivery -> MaternalObesity
+CalendarYearOfDelivery -> MaternalPsychiatricDisease
+
+CountryOfBirth -> MaternalMASLD
+CountryOfBirth -> OffspringNDD
+CountryOfBirth -> MaternalLowEducationLevel
+
+MaternalAgeAtDelivery -> MaternalDM2
+MaternalAgeAtDelivery -> MaternalDyslipidemia
+MaternalAgeAtDelivery -> MaternalGDM
+MaternalAgeAtDelivery -> MaternalGHT
+MaternalAgeAtDelivery -> MaternalMASLD
+MaternalAgeAtDelivery -> MaternalObesity
+MaternalAgeAtDelivery -> OffspringNDD
+
+MaternalDM2 -> MaternalMASLD
+MaternalDM2 -> OffspringNDD
+
+MaternalDyslipidemia -> MaternalMASLD
+MaternalDyslipidemia -> OffspringNDD
+MaternalDyslipidemia -> MaternalGHT
+MaternalDyslipidemia -> MaternalHT
+MaternalDyslipidemia -> MaternalGDM
+MaternalDyslipidemia -> MaternalDM2
+
+MaternalGDM -> MaternalMASLD
+MaternalGDM -> OffspringNDD
+MaternalGDM -> MaternalDM2
+
+MaternalGHT -> MaternalMASLD
+MaternalGHT -> OffspringNDD
+MaternalGHT -> MaternalHT
+
+MaternalHT -> MaternalMASLD
+MaternalHT -> OffspringNDD
+
+MaternalLowEducationLevel -> MaternalMASLD
+MaternalLowEducationLevel -> MaternalSmoking
+MaternalLowEducationLevel -> OffspringNDD
+MaternalLowEducationLevel -> MaternalObesity
+
+MaternalMASLD -> OffspringNDD
+MaternalMASLD <-> MaternalNDD
+
+MaternalMASLD <-> MaternalPsychiatricDisease
+
+MaternalNDD -> OffspringNDD
+MaternalNDD -> MaternalPsychiatricDisease
+
+MaternalObesity -> MaternalDM2
+MaternalObesity -> MaternalDyslipidemia
+MaternalObesity -> MaternalGDM
+MaternalObesity -> MaternalGHT
+MaternalObesity -> MaternalHT
+MaternalObesity -> MaternalMASLD
+MaternalObesity -> OffspringNDD
+
+MaternalPsychiatricDisease -> OffspringNDD
+MaternalPsychiatricDisease -> MaternalLowEducationLevel
+
+MaternalSmoking -> MaternalMASLD
+MaternalSmoking -> OffspringNDD
+
+OffspringSex -> OffspringNDD
+
+Parity -> MaternalGDM
+Parity -> MaternalGHT
+Parity -> MaternalMASLD
+Parity -> OffspringNDD
+
+MaternalMASLD -> PretermBirth
+PretermBirth -> OffspringNDD
+
+MaternalMASLD -> FetalGrowth
+FetalGrowth -> OffspringNDD
+}
